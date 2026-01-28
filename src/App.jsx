@@ -8,13 +8,13 @@ import ogImageSource from './assets/og-image.png'
 
 const App = () => {
   // 2. Define your production URL
-  const siteUrl = 'https://your-portfolio-link.com'
+  const siteUrl = 'https://my-portfolio-nine-green-69.vercel.app/'
 
   // 3. Construct the absolute path dynamically
   const absoluteOgImageUrl = `${siteUrl}${ogImageSource}`
 
   // Replace with your actual Measurement ID from Google Analytics
-  const TRACKING_ID = 'G-XXXXXXXXXX'
+  const TRACKING_ID = import.meta.VITE_MEASUREMENT_ID
 
   const App = () => {
     useEffect(() => {
