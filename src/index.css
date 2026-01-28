@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Karla:ital,wght@0,200..800;1,200..800&family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-haiti: #231534;
+  --color-vibrant-violet: #7431e4;
+  --font-spline: 'Spline Sans Mono', monospace;
+  --font-karla: 'Karla', sans-serif;
+  --font-jetBrain: 'JetBrains Mono', monospace;
+}
+
+@media (min-width: 768px) {
+  body {
+    cursor: none;
+  }
+  a,
+  button,
+  input,
+  textarea {
+    cursor: none;
+  }
+}
+
+/* Style for the large background outline text */
+.background-text {
+  font-size: 120px;
+  font-weight: bold;
+  color: transparent; /* Makes the middle of the letters empty */
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1); /* Creates the thin white outline */
+  position: absolute;
+  z-index: 1;
+  text-transform: uppercase;
+}
+
+/* Style for the smaller solid foreground text */
+.foreground-text {
+  font-size: 60px;
+  color: #ffffff;
+  position: relative;
+  z-index: 2; /* Sits on top of the outline */
+}
