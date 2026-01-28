@@ -30,16 +30,35 @@ const App = () => {
           />
           <link rel='canonical' href={siteUrl} />
 
-          {/* Social Metadata */}
+          {/* Open Graph - Must use "property" */}
           <meta property='og:type' content='website' />
-          <meta property='og:url' content={siteUrl} />
           <meta
             property='og:title'
-            content='Rajiv Kumar | Full-Stack Developer'
+            content='Rajiv Kumar | Full-Stack Engineer'
           />
-          <meta property='og:image' content={absoluteOgImageUrl} />
+          <meta
+            property='og:description'
+            content='MERN Stack Specialist & Fiction Enthusiast.'
+          />
+          <meta
+            property='og:url'
+            content='https://my-portfolio-nine-green-69.vercel.app/'
+          />
+
+          <meta
+            property='og:image'
+            content='https://my-portfolio-nine-green-69.vercel.app/og-image.png'
+          />
+          <meta property='og:image:width' content='1200' />
+          <meta property='og:image:height' content='630' />
+          <meta property='og:image:type' content='image/png' />
+
+          {/* Twitter - Must use "name" */}
           <meta name='twitter:card' content='summary_large_image' />
-          <meta name='twitter:image' content={absoluteOgImageUrl} />
+          <meta
+            name='twitter:image'
+            content='https://my-portfolio-nine-green-69.vercel.app/og-image.png'
+          />
         </Helmet>
 
         <AppLayout />
