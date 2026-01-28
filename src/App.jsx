@@ -35,7 +35,7 @@ const App = () => {
           />
           {/* 1. Force Large Image Card for Twitter/X & WhatsApp */}
           <meta name='twitter:card' content='summary_large_image' />
-          <meta name='twitter:site' content='@your_handle' />{' '}
+          <meta name='twitter:site' content='@Rajiv0920' />{' '}
           {/* Optional but helps */}
           <meta
             name='twitter:title'
