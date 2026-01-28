@@ -14,7 +14,7 @@ const App = () => {
   const absoluteOgImageUrl = `${siteUrl}${ogImageSource}`
 
   // Replace with your actual Measurement ID from Google Analytics
-  const TRACKING_ID = import.meta.VITE_MEASUREMENT_ID
+  const TRACKING_ID = import.meta.env.VITE_MEASUREMENT_ID
 
   const App = () => {
     useEffect(() => {
