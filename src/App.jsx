@@ -23,13 +23,51 @@ const App = () => {
     <HelmetProvider>
       <div className='relative min-h-screen w-full overflow-hidden bg-haiti'>
         <Helmet>
-          {/* The standard OG Image tag you already have */}
+          {/* Standard Meta */}
+          <title>Rajiv Kumar | Full-Stack JavaScript Engineer</title>
+          <meta
+            name='description'
+            content='MERN Stack Specialist & Fiction Enthusiast. Crafting scalable web experiences.'
+          />
+          <link
+            rel='canonical'
+            href='https://my-portfolio-nine-green-69.vercel.app'
+          />
+          {/* 1. Force Large Image Card for Twitter/X & WhatsApp */}
+          <meta name='twitter:card' content='summary_large_image' />
+          <meta name='twitter:site' content='@your_handle' />{' '}
+          {/* Optional but helps */}
+          <meta
+            name='twitter:title'
+            content='Rajiv Kumar | Full-Stack Developer'
+          />
+          <meta
+            name='twitter:description'
+            content='Portfolio of Rajiv Kumar, a Full-Stack JavaScript Engineer specializing in the MERN stack.'
+          />
+          <meta
+            name='twitter:image'
+            content='https://my-portfolio-nine-green-69.vercel.app/og-image.png'
+          />
+          {/* 2. Open Graph (Facebook/LinkedIn/WhatsApp) */}
+          <meta property='og:type' content='website' />
+          <meta
+            property='og:url'
+            content='https://my-portfolio-nine-green-69.vercel.app/'
+          />
+          <meta
+            property='og:title'
+            content='Rajiv Kumar | Full-Stack JavaScript Engineer'
+          />
+          <meta
+            property='og:description'
+            content='MERN Stack Specialist & Fiction Enthusiast. Crafting scalable web experiences.'
+          />
+          {/* 3. The "Secret Sauce" for Instant Rendering */}
           <meta
             property='og:image'
             content='https://my-portfolio-nine-green-69.vercel.app/og-image.png'
           />
-
-          {/* WhatsApp/LinkedIn explicitly need these to render the preview instantly */}
           <meta
             property='og:image:secure_url'
             content='https://my-portfolio-nine-green-69.vercel.app/og-image.png'
@@ -39,14 +77,7 @@ const App = () => {
           <meta property='og:image:height' content='630' />
           <meta
             property='og:image:alt'
-            content='Rajiv Kumar Portfolio Preview'
-          />
-
-          {/* Twitter specific card */}
-          <meta name='twitter:card' content='summary_large_image' />
-          <meta
-            name='twitter:image'
-            content='https://my-portfolio-nine-green-69.vercel.app/og-image.png'
+            content='Rajiv Kumar Portfolio Banner'
           />
         </Helmet>
 
