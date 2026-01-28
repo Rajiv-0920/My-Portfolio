@@ -20,7 +20,7 @@ const projects = [
   },
   {
     id: 2,
-    title: 'CodeBridge | Collaborative IDE',
+    title: 'Real-time Collaborative IDE',
     description:
       'A real-time collaborative code editor designed for pair programming. Features include live syntax highlighting, multi-user cursor tracking, and instant synchronization across clients using Socket.io.',
     tech: [
