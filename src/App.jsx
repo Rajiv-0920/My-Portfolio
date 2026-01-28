@@ -23,37 +23,26 @@ const App = () => {
     <HelmetProvider>
       <div className='relative min-h-screen w-full overflow-hidden bg-haiti'>
         <Helmet>
-          <title>Rajiv Kumar | Full-Stack JavaScript Engineer</title>
-          <meta
-            name='description'
-            content='MERN Stack Specialist & Fiction Enthusiast.'
-          />
-          <link rel='canonical' href={siteUrl} />
-
-          {/* Open Graph - Must use "property" */}
-          <meta property='og:type' content='website' />
-          <meta
-            property='og:title'
-            content='Rajiv Kumar | Full-Stack Engineer'
-          />
-          <meta
-            property='og:description'
-            content='MERN Stack Specialist & Fiction Enthusiast.'
-          />
-          <meta
-            property='og:url'
-            content='https://my-portfolio-nine-green-69.vercel.app/'
-          />
-
+          {/* The standard OG Image tag you already have */}
           <meta
             property='og:image'
             content='https://my-portfolio-nine-green-69.vercel.app/og-image.png'
           />
+
+          {/* WhatsApp/LinkedIn explicitly need these to render the preview instantly */}
+          <meta
+            property='og:image:secure_url'
+            content='https://my-portfolio-nine-green-69.vercel.app/og-image.png'
+          />
+          <meta property='og:image:type' content='image/png' />
           <meta property='og:image:width' content='1200' />
           <meta property='og:image:height' content='630' />
-          <meta property='og:image:type' content='image/png' />
+          <meta
+            property='og:image:alt'
+            content='Rajiv Kumar Portfolio Preview'
+          />
 
-          {/* Twitter - Must use "name" */}
+          {/* Twitter specific card */}
           <meta name='twitter:card' content='summary_large_image' />
           <meta
             name='twitter:image'
