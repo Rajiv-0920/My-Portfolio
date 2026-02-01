@@ -60,16 +60,16 @@ const CursorTracker = () => {
 
   return (
     <>
-      {/* THE INNER DOT: Fast and responsive */}
+      {/* THE INNER DOT: Increased z-index to 99999 */}
       <div
         ref={dotRef}
-        className='fixed top-0 left-0 w-1.5 h-1.5 bg-white rounded-full pointer-events-none z-[9999] transition-transform duration-75 ease-out will-change-transform'
+        className='fixed top-0 left-0 w-1.5 h-1.5 bg-white rounded-full pointer-events-none z-[99999] transition-transform duration-75 ease-out will-change-transform'
       />
 
-      {/* THE OUTER RING: Smooth "trailing" effect */}
+      {/* THE OUTER RING: Increased z-index to 99998 */}
       <div
         ref={ringRef}
-        className={`fixed top-0 left-0 rounded-full border border-purple-500/50 pointer-events-none z-[9998] transition-all will-change-transform flex items-center justify-center ${
+        className={`fixed top-0 left-0 rounded-full border border-purple-500/50 pointer-events-none z-[99998] transition-all will-change-transform flex items-center justify-center ${
           isHovering
             ? 'w-16 h-16 bg-purple-500/10 border-purple-400'
             : 'w-10 h-10'
@@ -77,12 +77,10 @@ const CursorTracker = () => {
           isActive ? 'scale-75 border-purple-300 bg-purple-500/30' : 'scale-100'
         }`}
         style={{
-          // Slower transition creates the magnetic/trailing feel
           transitionDuration: isHovering ? '250ms' : '500ms',
           transitionTimingFunction: 'cubic-bezier(0.23, 1, 0.32, 1)',
         }}
       >
-        {/* Subtle center crosshair for "Developer" feel */}
         {isHovering && (
           <div className='w-1 h-1 bg-purple-400 rounded-full animate-ping' />
         )}

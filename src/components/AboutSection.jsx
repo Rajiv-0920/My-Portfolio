@@ -40,7 +40,7 @@ const AboutSection = () => {
           >
             <h3 className='text-2xl font-bold mb-4'>More than just code.</h3>
             <p className='text-gray-300 leading-relaxed font-karla text-lg'>
-              I'm a Full Stack Engineer who bridges the gap between{' '}
+              I'm a Full Stack Developer who bridges the gap between{' '}
               <span className='text-purple-300'>functional code</span> and{' '}
               <span className='text-purple-300'>visual design</span>. While I
               specialize in the MERN stack, my true skill is solving difficult

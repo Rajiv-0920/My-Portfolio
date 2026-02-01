@@ -5,7 +5,6 @@ import Title from './Title'
 
 const SkillsSection = () => {
   return (
-    // Added py-32 to give the whole section breathing room from other sections
     <section id='skills' className='relative w-full overflow-hidden'>
       {/* Central Background Blur */}
       <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] bg-purple-600/10 rounded-full opacity-20 blur-[150px] pointer-events-none select-none'></div>

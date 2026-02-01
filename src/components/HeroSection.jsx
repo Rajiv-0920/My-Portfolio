@@ -175,7 +175,7 @@ const HeroSection = () => {
   const generateSkillPositions = () => {
     return skills.map((skill, index) => {
       const angle = (index / skills.length) * Math.PI * 2
-      const radius = 35 + Math.random() * 15 // 35-50% from center
+      const radius = 15 + Math.random() * 35 // 35-50% from center
       const x = 50 + Math.cos(angle) * radius
       const y = 50 + Math.sin(angle) * radius
 
@@ -380,7 +380,7 @@ const HeroSection = () => {
         {/* DESCRIPTION */}
         <p className='mt-6 text-gray-300 max-w-5xl mx-auto text-lg leading-relaxed'>
           <span className='font-spline font-light text-white'>
-            Full-Stack JavaScript Engineer.
+            Full-Stack JavaScript Developer.
           </span>{' '}
           <span className='font-karla font-light'>
             I deliver seamless, production-ready web experiences by mastering

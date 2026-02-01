@@ -6,18 +6,52 @@ import { RxHamburgerMenu } from 'react-icons/rx'
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState('home')
+
+  const navItems = ['Home', 'Skills', 'Projects', 'About']
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
+    const handleScroll = () => {
+      // 1. Handle Background Blur Toggle
+      setScrolled(window.scrollY > 20)
+
+      // 2. Highlighting Logic: Find which section is in view
+      const sectionIds = ['home', 'skills', 'projects', 'about', 'contact']
+      const scrollPosition = window.scrollY + 150 // Offset for earlier detection
+
+      for (const id of sectionIds) {
+        const element = document.getElementById(id)
+        if (element) {
+          const { offsetTop, offsetHeight } = element
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            setActiveSection(id)
+            break
+          }
+        }
+      }
+    }
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const handleScroll = (e, id) => {
+  const handleScrollTo = (e, id) => {
     e.preventDefault()
     const element = document.getElementById(id)
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      const offset = 80 // Adjust based on navbar height
+      const bodyRect = document.body.getBoundingClientRect().top
+      const elementRect = element.getBoundingClientRect().top
+      const elementPosition = elementRect - bodyRect
+      const offsetPosition = elementPosition - offset
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      })
       setIsOpen(false)
     }
   }
@@ -39,30 +73,48 @@ const Navbar = () => {
           className='cursor-pointer group'
         >
           <span className='text-lg font-spline tracking-tighter text-white'>
-            <span className='text-purple-400'>&lt;</span>
-            Rajiv Kumar
+            <span className='text-purple-400'>&lt;</span> Rajiv Kumar{' '}
             <span className='text-purple-400'> /&gt;</span>
           </span>
         </a>
 
         {/* DESKTOP LINKS */}
-        <div className='hidden md:flex items-center gap-8 text-sm font-medium text-gray-300'>
-          {['Home', 'Skills', 'Projects', 'About'].map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              onClick={(e) => handleScroll(e, item.toLowerCase())}
-              className='hover:text-white text-[18px] font-light tracking-wider font-karla hover:scale-105 transition-all'
-            >
-              {item}
-            </a>
-          ))}
+        <div className='hidden md:flex items-center gap-8 text-sm font-medium'>
+          {navItems.map((item) => {
+            const id = item.toLowerCase()
+            const isActive = activeSection === id
 
-          {/* PRIMARY CONTACT BUTTON */}
+            return (
+              <a
+                key={item}
+                href={`#${id}`}
+                onClick={(e) => handleScrollTo(e, id)}
+                className={`relative text-[18px] font-light tracking-wider font-karla transition-all hover:scale-105
+                  ${isActive ? 'text-purple-400' : 'text-gray-300 hover:text-white'}
+                `}
+              >
+                {item}
+                {isActive && (
+                  <motion.div
+                    layoutId='underline'
+                    className='absolute -bottom-1 left-0 right-0 h-[2px] bg-purple-400'
+                  />
+                )}
+              </a>
+            )
+          })}
+
+          {/* CONTACT BUTTON HIGHLIGHT */}
           <a
             href='#contact'
-            onClick={(e) => handleScroll(e, 'contact')}
-            className='px-6 py-2 bg-purple-600/20 border border-purple-500/50 rounded-full text-white text-[18px] font-light tracking-wider font-karla hover:bg-purple-600/40 hover:scale-105 transition-all'
+            onClick={(e) => handleScrollTo(e, 'contact')}
+            className={`px-6 py-2 border rounded-full text-[18px] font-light tracking-wider font-karla hover:scale-105 transition-all
+              ${
+                activeSection === 'contact'
+                  ? 'bg-purple-600/60 border-purple-400 text-white shadow-lg shadow-purple-500/20'
+                  : 'bg-purple-600/20 border-purple-500/50 text-white hover:bg-purple-600/40'
+              }
+            `}
           >
             Contact Us
           </a>
@@ -84,27 +136,22 @@ const Navbar = () => {
             initial={{ opacity: 0, scale: 0.95, y: -10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -10 }}
-            className='absolute top-24 left-4 right-4 bg-[#030014]/35 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 flex flex-col gap-6 text-center pointer-events-auto md:hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden'
+            className='absolute top-24 left-4 right-4 bg-[#030014]/80 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 flex flex-col gap-6 text-center pointer-events-auto md:hidden'
           >
-            <div className='absolute -top-10 -right-10 w-32 h-32 bg-purple-600/20 blur-[50px] pointer-events-none' />
-
-            {['Home', 'Skills', 'Projects', 'About'].map((item) => (
-              <a
-                key={item}
-                onClick={(e) => handleScroll(e, item.toLowerCase())}
-                className='text-xl font-light text-gray-300 hover:text-purple-400 border-b border-white/5 pb-4 font-karla tracking-wide'
-              >
-                {item}
-              </a>
-            ))}
-
-            {/* MOBILE PRIMARY CTA */}
-            <a
-              onClick={(e) => handleScroll(e, 'contact')}
-              className='text-xl font-medium text-white bg-purple-600/30 border border-purple-500/50 py-3 rounded-2xl font-karla tracking-wide'
-            >
-              Contact Us
-            </a>
+            {navItems.map((item) => {
+              const id = item.toLowerCase()
+              return (
+                <a
+                  key={item}
+                  onClick={(e) => handleScrollTo(e, id)}
+                  className={`text-xl font-light border-b border-white/5 pb-4 font-karla tracking-wide
+                    ${activeSection === id ? 'text-purple-400 font-medium' : 'text-gray-300'}
+                  `}
+                >
+                  {item}
+                </a>
+              )
+            })}
           </motion.div>
         )}
       </AnimatePresence>

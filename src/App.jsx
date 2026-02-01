@@ -25,7 +25,7 @@ const App = () => {
       <Helmet>
         {/* Standard Meta */}
         <title>
-          Rajiv Kumar | Full-Stack JavaScript Engineer & MERN Specialist
+          Rajiv Kumar | Full-Stack JavaScript Developer & MERN Specialist
         </title>
         <meta
           name='description'
@@ -40,7 +40,7 @@ const App = () => {
         />
         <meta
           property='og:title'
-          content='Rajiv Kumar | Full-Stack JavaScript Engineer & MERN Specialist'
+          content='Rajiv Kumar | Full-Stack JavaScript Developer & MERN Specialist'
         />
         <meta
           property='og:description'
@@ -59,7 +59,7 @@ const App = () => {
         />
         <meta
           name='twitter:title'
-          content='Rajiv Kumar | Full-Stack JavaScript Engineer & MERN Specialist'
+          content='Rajiv Kumar | Full-Stack JavaScript Developer & MERN Specialist'
         />
         <meta
           name='twitter:description'
