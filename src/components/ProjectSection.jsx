@@ -5,6 +5,7 @@ import codebridge from '../assets/Desktop - 4.png'
 import chat from '../assets/Desktop - 6.png'
 import kanban from '../assets/Desktop - 5.png'
 import notenest from '../assets/Desktop - 7.png'
+import hardware_monitor from '../assets/hardware_monitor.png'
 import { RadioTower, Github, ExternalLink } from 'lucide-react' // Added cleaner icons
 
 const projects = [
@@ -17,6 +18,16 @@ const projects = [
     image: chat,
     liveLink: 'https://realtime-chat-app-as0r.onrender.com/',
     githubLink: 'https://github.com/Rajiv-0920/Realtime-Chat-App',
+  },
+  {
+    id: 'generated-uuid-2',
+    title: 'Real-time Hardware Performance Monitoring Dashboard',
+    description:
+      'A real-time dashboard for monitoring hardware performance metrics such as CPU usage, memory consumption, and network activity. Built with React and Socket.io for live data updates.',
+    tech: ['React', 'Node.js', 'Express', 'Socket.io', 'Tailwind CSS'],
+    image: hardware_monitor,
+    liveLink: '#',
+    githubLink: 'https://github.com/Rajiv-0920/Hardware-Performance-Monitor',
   },
   {
     id: 2,
@@ -118,18 +129,20 @@ const ProjectsSection = () => {
 
                 {/* LINKS (Buttons) */}
                 <div className='flex items-center gap-4 pt-4 border-t border-white/5'>
-                  <a
-                    href={project.liveLink}
-                    target='_blank'
-                    rel='noreferrer'
-                    className='flex items-center gap-2 text-sm font-medium text-white/80 hover:text-purple-400 transition-colors'
-                  >
-                    <RadioTower
-                      size={18}
-                      className='animate-pulse text-purple-500'
-                    />
-                    Live Demo
-                  </a>
+                  {project.liveLink !== '#' && (
+                    <a
+                      href={project.liveLink}
+                      target='_blank'
+                      rel='noreferrer'
+                      className='flex items-center gap-2 text-sm font-medium text-white/80 hover:text-purple-400 transition-colors'
+                    >
+                      <RadioTower
+                        size={18}
+                        className='animate-pulse text-purple-500'
+                      />
+                      Live Demo
+                    </a>
+                  )}
 
                   <a
                     href={project.githubLink}
