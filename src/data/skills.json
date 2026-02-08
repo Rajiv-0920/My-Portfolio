@@ -73,6 +73,7 @@
     "name": "Next.js",
     "category": "Frontend",
     "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+    "className": "invert",
     "knowledge": [
       "App Router",
       "SSR & SSG",

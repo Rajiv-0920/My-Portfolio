@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion' // Add this import
 import Title from './Title'
 import codebridge from '../assets/Desktop - 4.png'
@@ -6,7 +6,12 @@ import chat from '../assets/Desktop - 6.png'
 import kanban from '../assets/Desktop - 5.png'
 import notenest from '../assets/Desktop - 7.png'
 import hardware_monitor from '../assets/hardware_monitor.png'
+import whiteboard from '../assets/whiteboard.png'
+import whiteboard_components from '../assets/whiteboard-components.png'
+import collaborative_code from '../assets/collaborative-code.png'
+import codebridge_dashboard from '../assets/codebridge-dashboard.png'
 import { RadioTower, Github, ExternalLink } from 'lucide-react' // Added cleaner icons
+import ProjectImageSlider from './ProjectImageSlider'
 
 const projects = [
   {
@@ -42,9 +47,26 @@ const projects = [
       'Monaco Editor',
       'Tailwind',
     ],
-    image: codebridge,
+    images: [codebridge, collaborative_code, codebridge_dashboard],
     liveLink: 'https://codebridge-d7id.onrender.com/', // Update with your actual deployment
     githubLink: 'https://github.com/Rajiv-0920/CodeBridge',
+  },
+  {
+    id: 'uuid_5', // Continuing your numerical sequence
+    title: 'Whiteboard | Real-time Collaborative Whiteboard',
+    description:
+      'A high-performance collaborative workspace enabling multiple users to draw, create shapes, and brainstorm in real-time. Featuring ultra-low latency synchronization, live cursor tracking with user labels, and a robust undo/redo history system.',
+    tech: [
+      'React',
+      'Node.js',
+      'Socket.io',
+      'React-Konva',
+      'Tailwind CSS',
+      'Lucide React',
+    ],
+    images: [whiteboard, whiteboard_components], // Ensure you import your screenshot as 'whiteboard'
+    liveLink: 'https://whiteboard-n8c7.onrender.com', // Based on your previous screenshots
+    githubLink: 'https://github.com/Rajiv-0920/whiteboard', // Update with your exact repo name
   },
   {
     id: 3,
@@ -69,6 +91,7 @@ const projects = [
 ]
 
 const ProjectsSection = () => {
+  const [hoveredId, setHoveredId] = useState(null)
   return (
     <section
       id='projects'
@@ -88,6 +111,8 @@ const ProjectsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              onMouseEnter={() => setHoveredId(project.id)}
+              onMouseLeave={() => setHoveredId(null)}
               className='group relative rounded-2xl bg-white/5 border border-white/10 overflow-hidden hover:border-purple-500/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(168,85,247,0.15)] flex flex-col'
             >
               {/* IMAGE CONTAINER */}
@@ -96,10 +121,10 @@ const ProjectsSection = () => {
                 <div className='absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-transparent to-transparent opacity-60 z-10'></div>
                 <div className='absolute inset-0 bg-purple-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10'></div>
 
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className='h-full w-full object-cover transform transition-transform duration-700 group-hover:scale-105'
+                <ProjectImageSlider
+                  images={project.images || [project.image]}
+                  isHovered={hoveredId === project.id}
+                  title={project.title}
                 />
               </div>
 
