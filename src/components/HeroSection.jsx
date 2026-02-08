@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import PortfolioSvg from '../assets/bg-text.svg'
-import MyResume from '../assets/Rajiv-Kumar-FullStack-Dev.pdf'
+import MyResume from '../assets/Rajiv_Kumar_FullStack_Dev.pdf'
 import { ArrowUpRight } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
